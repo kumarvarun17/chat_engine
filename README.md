@@ -1,2 +1,3 @@
-# waitlist
-Thoughts on a product for Norwegian client - 2024 June
+# engine_template_csharp
+
+Skeleton for starting a new C# project
