@@ -1,12 +1,13 @@
 ﻿
+using Engine.Chat;
 using Engine.Users;
 
 namespace Engine
 {
-    public  interface EventHub
+    public interface EventHub
     {
         void Subscribe(User user);
-        void Publish(ChatMessage message, User to);
+        void Publish(ChatMessage message, ChatRoom chatRoom, User sender);
         void Unsubscribe(User user);
     }
 }
