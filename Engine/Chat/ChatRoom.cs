@@ -5,11 +5,10 @@ namespace Engine.Chat;
 public class ChatRoom
 {
     public readonly List<Party> _users=[];
-    private readonly EventHub _hub;
     public readonly Guid Id;
-    private readonly Party _party1;
-    private readonly Party _party2;
-    private  List<ChatMessage> _messages = [];
+    internal readonly Party _party1;
+    internal readonly Party _party2;
+    public  List<ChatMessage> _messages = [];
 
     public ChatRoom(Party party1, Party party2)
     {
@@ -18,6 +17,11 @@ public class ChatRoom
         Id= Guid.NewGuid();
     }
 
+    public void Send(Party sender, ChatMessage chatMessage) => sender._eventHub.Publish( chatMessage,Id);
 
-    public void Send(Party sender, ChatMessage chatMessage) => _hub.Publish(sender, _party2, chatMessage, Id);
+    public void UpdateChatRoom()
+    {
+        _party1.UpdateChatRoom(this);
+        _party2.UpdateChatRoom(this);
+    }
 }

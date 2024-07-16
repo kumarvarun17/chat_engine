@@ -3,6 +3,7 @@ using Engine.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +18,22 @@ namespace Engine.Tests.Unit
 
         public void Unsubscribe(Party user) => users.Remove(user);
 
-        public void Publish(Party sender, Party receiver, ChatMessage message,Guid? chatRoomId)
+        public void Publish(ChatMessage message,Guid chatRoomId)
         {
-            if (chatRoomId == null) chatRoomId = new ChatRoom(sender, receiver).Id;
-
-            ChatRepository.records.Add(new ChatRecord(chatRoomId, message, sender, receiver));
-            receiver.UpdateChatRoom(chatRoomId);
+            ChatRoom room = ChatRoom(chatRoomId);
+            room._messages.Add(message);
+            room.UpdateChatRoom();
         }
+
+        public ChatRoom ChatRoom(Guid chatRoomId) => ChatRepository.records.First(x => x.Id == chatRoomId);
+
+        public ChatRoom CreateChatRoom(Party sender, Party receiver)
+        {
+            var room = new ChatRoom(sender, receiver);
+            ChatRepository.records.Add(room);
+            return room;
+        }
+
+        public Party Party(int receiverId) => ChatRepository.parties.FirstOrDefault(x => x.Id == receiverId);
     }
 }
