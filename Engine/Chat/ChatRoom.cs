@@ -4,14 +4,20 @@ namespace Engine.Chat;
 
 public class ChatRoom
 {
-    public readonly List<User> _users=[];
-   private readonly EventHub _hub;
-    public ChatRoom(EventHub hub, User user1, User user2, params User[] users)
+    public readonly List<Party> _users=[];
+    private readonly EventHub _hub;
+    public readonly Guid Id;
+    private readonly Party _party1;
+    private readonly Party _party2;
+    private  List<ChatMessage> _messages = [];
+
+    public ChatRoom(Party party1, Party party2)
     {
-        _hub=hub;
-        _users.AddRange([user1, user2]);
-        _users.AddRange(users);
+        _party1 = party1;
+        _party2 = party2;
+        Id= Guid.NewGuid();
     }
 
-    public void Send(User sender, ChatMessage chatMessage) => _hub.Publish(chatMessage, this, sender);
+
+    public void Send(Party sender, ChatMessage chatMessage) => _hub.Publish(sender, _party2, chatMessage, Id);
 }

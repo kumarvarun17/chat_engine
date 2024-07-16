@@ -6,8 +6,10 @@ namespace Engine
 {
     public interface EventHub
     {
-        void Subscribe(User user);
-        void Publish(ChatMessage message, ChatRoom chatRoom, User sender);
-        void Unsubscribe(User user);
+        void Subscribe(Party user);
+        void Publish(Party sender,Party receiver, ChatMessage message,Guid? chatRoomId);
+        void Unsubscribe(Party user);
+
+
     }
 }

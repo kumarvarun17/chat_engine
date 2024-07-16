@@ -10,16 +10,19 @@ namespace Engine.Tests.Unit
 {
     internal class TestEventHub : EventHub
     {
-        List<User> users =[];
+        List<Party> users =[];
         public List<(ChatMessage,ChatRoom)> messageQueue = [];
-        public void Publish(ChatMessage message, ChatRoom chatRoom,User sender)
+    
+        public void Subscribe(Party user) => users.Add(user);
+
+        public void Unsubscribe(Party user) => users.Remove(user);
+
+        public void Publish(Party sender, Party receiver, ChatMessage message,Guid? chatRoomId)
         {
-            messageQueue.Add((message, chatRoom));
-            chatRoom._users.ForEach(u=> { if (u.Id != sender.Id) u.Recieve(message); });
+            if (chatRoomId == null) chatRoomId = new ChatRoom(sender, receiver).Id;
+
+            ChatRepository.records.Add(new ChatRecord(chatRoomId, message, sender, receiver));
+            receiver.UpdateChatRoom(chatRoomId);
         }
-
-        public void Subscribe(User user) => users.Add(user);
-
-        public void Unsubscribe(User user) => users.Remove(user);
     }
 }
