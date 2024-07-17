@@ -13,8 +13,8 @@ namespace Engine.Tests.Unit
     {
         List<Party> users =[];
         public List<(ChatMessage,ChatRoom)> messageQueue = [];
-    
-        public void Subscribe(Party user) => users.Add(user);
+
+        public void Subscribe(int Id) => users.Add(ChatRepository.parties.FirstOrDefault(x => x.Id == Id));
 
         public void Unsubscribe(Party user) => users.Remove(user);
 

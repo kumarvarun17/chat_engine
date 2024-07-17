@@ -12,7 +12,7 @@ public class Party
     {
         Id = id;
         _eventHub = eventHub;
-        _eventHub.Subscribe(this);
+        _eventHub.Subscribe(Id);
     }
 
     public void UpdateChatRoom(ChatRoom chatRoom)

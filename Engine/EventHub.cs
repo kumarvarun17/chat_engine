@@ -6,7 +6,7 @@ namespace Engine
 {
     public interface EventHub
     {
-        void Subscribe(Party user);
+        void Subscribe(int id);
         void Publish( ChatMessage message,Guid chatRoomId);
         void Unsubscribe(Party user);
         ChatRoom ChatRoom(Guid chatRoomId);

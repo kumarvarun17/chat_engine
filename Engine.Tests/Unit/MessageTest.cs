@@ -35,6 +35,8 @@ namespace Engine.Tests.Unit
             Assert.Equal(1, party2.rooms.Count);
 
         }
+        
+
 
 
     }

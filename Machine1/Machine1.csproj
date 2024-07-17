@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.csproj" />
-    <ProjectReference Include="..\EventHub\EventHub.csproj" />
   </ItemGroup>
 
 </Project>

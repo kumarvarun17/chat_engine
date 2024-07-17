@@ -1,7 +1,7 @@
 ﻿using Engine.Chat;
 using Engine.Users;
 
-namespace Engine.Tests.Unit
+namespace EventHub.Test
 {
     public class eventhub
     {
@@ -12,7 +12,7 @@ namespace Engine.Tests.Unit
     }
    
 
-    public class TestEventHub : EventHub
+    public class TestEventHub : Engine.EventHub
     {
         List<Party> users = [];
         private static TestEventHub? Instance=null;
@@ -33,7 +33,7 @@ namespace Engine.Tests.Unit
 
         public List<(ChatMessage, ChatRoom)> messageQueue = [];
 
-        public void Subscribe(Party user) => users.Add(user);
+        public void Subscribe(int Id) => users.Add(ChatRepository.parties.FirstOrDefault(x => x.Id == Id));
 
         public void Unsubscribe(Party user) => users.Remove(user);
 
@@ -54,18 +54,21 @@ namespace Engine.Tests.Unit
         }
 
         public Party Party(int receiverId) => ChatRepository.parties.FirstOrDefault(x => x.Id == receiverId);
+
+        
     }
 
-    internal static class ChatRepository
+    public static class ChatRepository
     {
-        internal static List<ChatRoom> records = [];
-        internal static List<Party> parties = [UserData.party1, UserData.party2];
+        public static List<ChatRoom> records = [];
+        public static List<Party> parties = [UserData.party1, UserData.party2];
     }
-
     public static class UserData
     {
-        public static EventHub eventHub = TestEventHub.GetInstance();
-        public static Party party1 = new Party(1, eventHub);
+        public static Engine.EventHub eventHub = TestEventHub.GetInstance();
         public static Party party2 = new Party(2, eventHub);
+        public static Party party1 = new Party(1, eventHub);
     }
+
+
 }
