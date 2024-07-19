@@ -11,15 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Machine1", "Machine1\Machin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Machine2", "Machine2\Machine2.csproj", "{4F793A0A-D977-4DB2-8027-794A83C98B50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatHub", "ChatHub\ChatHub.csproj", "{9970459F-E074-4FFC-9C4B-66F30A47ACAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatHub", "ChatHub\ChatHub.csproj", "{9970459F-E074-4FFC-9C4B-66F30A47ACAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.Client", "Engine.Client\Engine.Client.csproj", "{B78BE837-936A-40AE-B775-B4B2D6B31AB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine.Client", "Engine.Client\Engine.Client.csproj", "{B78BE837-936A-40AE-B775-B4B2D6B31AB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.Server", "Engine.Server\Engine.Server.csproj", "{730A922B-672C-4858-A1A1-5ED6CE7062AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine.Server", "Engine.Server\Engine.Server.csproj", "{730A922B-672C-4858-A1A1-5ED6CE7062AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.ClientTest", "Engine.ClientTest\Engine.ClientTest.csproj", "{5133676A-12B3-4726-A7F9-CC378C78285D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine.ClientTest", "Engine.ClientTest\Engine.ClientTest.csproj", "{5133676A-12B3-4726-A7F9-CC378C78285D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.ServerTest", "Engine.ServerTest\Engine.ServerTest.csproj", "{F8E5162B-DFE4-43E8-B81D-388D7C0DFCFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine.ServerTest", "Engine.ServerTest\Engine.ServerTest.csproj", "{F8E5162B-DFE4-43E8-B81D-388D7C0DFCFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
